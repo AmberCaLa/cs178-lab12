@@ -36,7 +36,23 @@ def analyze(word):
     # YOUR CODE HERE
     # Count the characters in `word` and return as a string
     # Example: /analyze/Drake  →  should display: 5
-    return str(len(word))
+    num_chars = str(len(word))
+
+    # Step 2: YOUR CODE HERE
+    # Count vowels (a, e, i, o, u) — case insensitive, y is not a vowel
+    # Hint: word.lower() converts to lowercase before checking each character
+    word = word.lower()
+    num_vowels = 0
+    vowels = ["a", "e", "i", "o", "u"]
+    for i in word:
+        if i in vowels:
+            num_vowels += 1
+
+    # render_template passes all variables into analyze.html
+    return render_template('analyze.html',
+                           word=word,
+                           num_chars=num_chars,
+                           num_vowels=num_vowels)
 
 
 
