@@ -48,11 +48,19 @@ def analyze(word):
         if i in vowels:
             num_vowels += 1
 
+    reversed_word = ""
+    word = word.lower()
+    position = len(word)
+    while position > 0:
+        reversed_word = word[-position] + reversed_word
+        position -= 1
+
     # render_template passes all variables into analyze.html
     return render_template('analyze.html',
                            word=word,
                            num_chars=num_chars,
-                           num_vowels=num_vowels)
+                           num_vowels=num_vowels,
+                           reversed_word=reversed_word)
 
 
 
